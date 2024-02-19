@@ -24,7 +24,7 @@ class BookRetrieveAndCommentView(APIView):
     
     @permission_classes([IsAuthenticated])
     def post(self, request, pk):
-        srz_data = BookCommentSerializer(data=request.POST)
+        srz_data = BookCommentSerializer(data=request.data)
         if srz_data.is_valid():
             srz_data.save()
             return Response(srz_data.data, status=status.HTTP_201_CREATED)
